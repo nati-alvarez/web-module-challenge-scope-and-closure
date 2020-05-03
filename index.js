@@ -28,9 +28,20 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ * counter1 uses a closure. it returns a function that updates the variable in the parent function's scope.
+ * counter2 increments a variable in the global scope named count.
+ * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
+ * counter1 uses a closure. It returns a function that affects a variable in the scope of the parent function.
+ * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ * 
+ * counter1's code might be useful if you only want the count variable to be increased by calling the inner function.
+ * That way, there's only one way that it can be increased.
+ * 
+ * counter2's code could be more preferable if you want to use the counter variable in many different functions as
+ * well as in the global scope, (logging and printing it out to the user for example.) 
  *
 */
 
