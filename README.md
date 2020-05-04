@@ -42,6 +42,11 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+   
+   A closure is when a parent function returns another function that has
+   access to the parent functions variables, even after it has finished
+   running.
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -63,8 +68,19 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+   
+   The closure is used when referencing the name variable in the console.log. I can tell because
+   name wasn't defined inside of the inner function being retured, but it is a parameter of the
+   parent
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+
+   The name will always remain the same. The number rolled is a random number between 1 and 6 each time.
+
 c. What is the lexical scope of `newRoll`? 
+
+   newRoll is only available to the inner function returned by personalDice.
+
 
 ### Task 3 - Stretch Goals
 
@@ -82,12 +98,29 @@ console.log("a defined? " + (typeof a !== 'undefined'));
 console.log("b defined? " + (typeof b !== 'undefined'));
 ```
 
+The output should be: 
+
+a defined? false
+b defined? false
+
+This is because the variables a and b are wrapped in something called an immediately invoked function expression. Therefore, the variables are
+only available inside of that function expression's lexical environment and any functions/block scopes inside of it. They can't be referenced in the global scope.
+
 2. Write a function that would allow you to do this using a closure. (This is another interview question we've seen before - when you're ready for answers, view an explanation [here](https://www.coderbyte.com/algorithm/3-common-javascript-closure-questions)).
 
 ```js
 var addSix = createBase(6);
 addSix(10); // returns 16
 addSix(21); // returns 27
+```
+
+```js
+  function createBase(num){
+    let base = num;
+    return function(num){
+      return num + base;
+    }
+  }
 ```
 
 3. Research the differences between functional programming and object oriented programming. Then, describe the pros and cons of functional programming vs object-oriented programming. This is a common interview question and great practice!
